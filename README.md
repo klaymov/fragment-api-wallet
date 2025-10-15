@@ -37,7 +37,7 @@ uv run main.py
 
 ## 🔰 Contributing
 
-- **💬 [Join the Discussions](https://github.com/klaymov/fragment-api-wallet/discussions)**: Share your insights, provide feedback, or ask questions.
+- **💬 [Join the Discussions](https://t.me/+lvHliIYaIBo3ZTFi)**: Share your insights, provide feedback, or ask questions.
 - **🐛 [Report Issues](https://github.com/klaymov/fragment-api-wallet/issues)**: Submit bugs found or log feature requests for the `fragment-api-wallet` project.
 
 <details open>
