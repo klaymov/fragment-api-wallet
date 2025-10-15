@@ -23,14 +23,14 @@ Install fragment-api-wallet using one of the following methods:
 
 3. Install the project dependencies:
 ```sh
-make sync
+❯ make sync
 ```
 
 
 ### 🤖 Usage
 Run fragment-api-wallet using the following command:
 ```sh
-uv run main.py
+❯ uv run main.py
 ```
 
 ---
