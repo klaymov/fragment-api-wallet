@@ -13,30 +13,21 @@ from tonutils.wallet import (
 
 
 async def send_transfer(
-    API_KEY: str,
-    MNEMONIC: list,
-    address: str,
-    amount: int,
-    payload: str
-    ) -> str:
-    client = TonapiClient(api_key=API_KEY, is_testnet=False)
-    wallet, public_key, private_key, mnemonic = WalletV5R1.from_mnemonic(client, MNEMONIC)
-    
-    tx_hash = await wallet.transfer(
+    api_key: str, mnemonic: list, address: str, amount: int, payload: str
+) -> str:
+    client = TonapiClient(api_key=api_key, is_testnet=False)
+    wallet, _public_key, _private_key, mnemonic = WalletV5R1.from_mnemonic(client, mnemonic)
+
+    return await wallet.transfer(
         destination=address,
         amount=to_amount(amount, 9, 9),
         body=payload,
     )
 
-    return tx_hash
 
+async def get_balance(api_key: str, mnemonic: list) -> int:
+    client = TonapiClient(api_key=api_key, is_testnet=False)
+    wallet, _public_key, _private_key, mnemonic = WalletV5R1.from_mnemonic(client, mnemonic)
 
-async def get_balance(
-    API_KEY: str,
-    MNEMONIC: list
-    ) -> int:
-    client = TonapiClient(api_key=API_KEY, is_testnet=False)
-    wallet, public_key, private_key, mnemonic = WalletV5R1.from_mnemonic(client, MNEMONIC)
-    
     balance = await wallet.balance()
     return to_amount(balance)

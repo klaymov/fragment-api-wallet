@@ -1,9 +1,129 @@
 [project]
 name = "fragment-api"
 version = "0.1.0"
-description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 dependencies = [
+    "aiohttp>=3.11.18",
     "tonutils>=0.3.6",
 ]
+
+[project.optional-dependencies]
+lint = [
+    "isort==7.0.0",
+    "ruff==0.14.0",
+    "mypy==1.18.2",
+    "types-pytz==2025.2.0.20250809",
+]
+
+[tool.isort]
+py_version = 313
+line_length = 100
+multi_line_output = 3
+force_grid_wrap = 0
+include_trailing_comma = true
+split_on_trailing_comma = false
+single_line_exclusions = ["."]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+skip_gitignore = true
+extend_skip = ["__pycache__"]
+known_first_party = [
+    "errors",
+    "filters",
+    "handlers",
+    "middlewares",
+    "settings",
+    "storages",
+    "stub",
+    "utils"
+]
+
+[tool.ruff]
+src = ["app"]
+line-length = 100
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    "__pypackages__",
+    "__pycache__",
+    "venv",
+    ".venv",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "A003",
+    "ANN002", "ANN003", "ANN401",
+    "C901",
+    "COM812",
+    "CPY001",
+    "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107", "D203", "D205", "D212",
+    "DOC201", "DOC501",
+    "ERA001",
+    "FA100", "FA102",
+    "FBT001", "FBT002",
+    "FIX002",
+    "I001",
+    "PLC2801",
+    "PLR0911", "PLR0912", "PLR0913", "PLR0914", "PLR0915", "PLR0917", "PLR1702", "PLR5501", "PLR6301",
+    "PLW0120",
+    "RUF001", "RUF029",
+    "TC006",
+    "TD002", "TD003",
+    "EXE002",
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"stub.pyi" = ["A002", "E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.13"
+plugins = [
+    "pydantic.mypy",
+    "sqlalchemy.ext.mypy.plugin",
+]
+allow_redefinition = true
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+extra_checks = true
+follow_imports = "normal"
+follow_imports_for_stubs = true
+ignore_missing_imports = false
+no_implicit_optional = true
+no_implicit_reexport = true
+pretty = true
+show_absolute_path = true
+show_error_codes = true
+show_error_context = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+disable_error_code = [
+    "assignment",
+    "attr-defined",
+    "no-redef",
+    "union-attr",
+]
+
+exclude = [
+    "\\.?venv",
+    "\\.idea",
+    "\\.tests?",
+]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true

@@ -1,10 +1,14 @@
-# Python-generated files
+*.mo
+*.pyc
+.env
+.env.*
+/.idea/
+/.ruff_cache/
+/.venv/
+/caddy/config/caddy/
+/caddy/data/caddy/
+/psql/data/
+/redis/data/
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
-.venv
+**/*.log
+stub.json
