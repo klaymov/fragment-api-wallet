@@ -25,7 +25,7 @@ async def send_transfer(
     )
 
 
-async def get_balance(api_key: str, mnemonic: list) -> int:
+async def get_balance(api_key: str, mnemonic: list) -> float | int:
     client = TonapiClient(api_key=api_key, is_testnet=False)
     wallet, _public_key, _private_key, mnemonic = WalletV5R1.from_mnemonic(client, mnemonic)
 
