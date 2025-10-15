@@ -55,5 +55,3 @@ uv run main.py
 ## 🎗 License
 
 This project is protected under the [License](https://github.com/klaymov/fragment-api-wallet/blob/master/LICENSE).
-
----
