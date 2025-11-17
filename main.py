@@ -1,7 +1,7 @@
 from api import fragment, wallet
 
 # wallet
-WALLET_API_KEY = "" #try https://tonapi.io/
+WALLET_API_KEY = "" #try https://tonconsole.com/dashboard
 WALLET_MNEMONIC = []
 
 # fragment
